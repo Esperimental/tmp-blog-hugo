@@ -30,5 +30,6 @@ for path in pages:
 home = (root / "index.html").read_text()
 assert home.index("Hello world") < home.index("A second entry")
 assert "The inventor" in (root / "posts/hello-world/index.html").read_text()
-assert (root / "assets/style.css").stat().st_size > 0
+styles = list(root.glob("style.*.css"))
+assert len(styles) == 1 and styles[0].stat().st_size > 0
 print(f"PASS: {len(pages)} HTML pages, {len(checked)} local references; newest first and author rendered")
