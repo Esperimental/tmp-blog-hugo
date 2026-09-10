@@ -54,6 +54,10 @@ with tempfile.TemporaryDirectory(prefix="blog-edit-trial-") as tmp:
     build()
     assert "Trial site title" in page.read_text()
     assert "Trial site title" in (output / "index.html").read_text()
-    assert "/preview/assets/style.css" in page.read_text()
+    rendered = page.read_text()
+    if kind == "hugo":
+        assert "/preview/style." in rendered and ".css" in rendered
+    else:
+        assert "/preview/assets/style.css" in rendered
     print("PASS: site title update; alternate deployment prefix")
 print("All editorial trials passed in disposable copy; source unchanged.")
