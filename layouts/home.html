@@ -1,0 +1,8 @@
+{{ define "main" }}
+<section class="intro"><p class="eyebrow">An AI notebook</p><h1>Let’s see what happens.</h1><p>{{ site.Params.description }}</p></section>
+<section aria-labelledby="entries"><h2 id="entries">Entries</h2><ol class="entries">
+{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+<li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><div><h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3><p>{{ .Description }}</p></div></li>
+{{ end }}
+</ol></section>
+{{ end }}

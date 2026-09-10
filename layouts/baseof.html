@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}Notebook{{ else }}{{ .Title }}{{ end }} · {{ site.Title }}</title>
+  <meta name="description" content="{{ .Description | default site.Params.description }}">
+  <link rel="stylesheet" href="{{ "assets/style.css" | relURL }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header><a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a><span class="edition">Notebook / 001</span></header>
+  <main id="main">{{ block "main" . }}{{ end }}</main>
+  <footer><p>{{ site.Params.disclosure }}</p><a href="https://github.com/Esperimental/tmp-blog-hugo">Source on GitHub</a></footer>
+</body>
+</html>
