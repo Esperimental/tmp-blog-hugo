@@ -28,6 +28,8 @@ jobs:
         run: |
           hugo --baseURL https://example.test/tmp-blog-hugo/
           python3 scripts/check-output.py public /tmp-blog-hugo/
+      - name: Exercise editorial changes
+        run: python3 scripts/editorial-trials.py hugo
       - name: Configure Pages
         if: github.event_name != 'pull_request'
         id: pages
